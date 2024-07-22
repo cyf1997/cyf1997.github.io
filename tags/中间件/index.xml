@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>中间件 on 图南程</title>
+    <link>https://cyf1997.github.io/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/</link>
+    <description>Recent content in 中间件 on 图南程</description>
+    <generator>Hugo -- 0.128.2</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 20 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://cyf1997.github.io/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FastDFS</title>
+      <link>https://cyf1997.github.io/posts/blog/fastdfs/</link>
+      <pubDate>Sat, 20 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://cyf1997.github.io/posts/blog/fastdfs/</guid>
+      <description>开源的轻量级分布式文件系统</description>
+    </item>
+  </channel>
+</rss>
