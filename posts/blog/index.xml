@@ -6,8 +6,15 @@
     <description>Recent content in Blog on 图南程</description>
     <generator>Hugo -- 0.128.2</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 24 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 03 Aug 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cyf1997.github.io/posts/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>处理.git文件夹过大臃肿</title>
+      <link>https://cyf1997.github.io/posts/blog/git/%E5%A4%84%E7%90%86.git%E6%96%87%E4%BB%B6%E5%A4%B9%E8%BF%87%E5%A4%A7%E8%87%83%E8%82%BF/</link>
+      <pubDate>Sat, 03 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://cyf1997.github.io/posts/blog/git/%E5%A4%84%E7%90%86.git%E6%96%87%E4%BB%B6%E5%A4%B9%E8%BF%87%E5%A4%A7%E8%87%83%E8%82%BF/</guid>
+      <description>处理.git文件夹过大臃肿</description>
+    </item>
     <item>
       <title>Mysql 递归</title>
       <link>https://cyf1997.github.io/posts/blog/mysql/mysql-%E9%80%92%E5%BD%92/</link>
