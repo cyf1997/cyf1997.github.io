@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Git on 图南程</title>
+    <link>https://cyf1997.github.io/tags/git/</link>
+    <description>Recent content in Git on 图南程</description>
+    <generator>Hugo -- 0.128.2</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 03 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://cyf1997.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>处理.git文件夹过大臃肿</title>
+      <link>https://cyf1997.github.io/posts/blog/git/%E5%A4%84%E7%90%86.git%E6%96%87%E4%BB%B6%E5%A4%B9%E8%BF%87%E5%A4%A7%E8%87%83%E8%82%BF/</link>
+      <pubDate>Sat, 03 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://cyf1997.github.io/posts/blog/git/%E5%A4%84%E7%90%86.git%E6%96%87%E4%BB%B6%E5%A4%B9%E8%BF%87%E5%A4%A7%E8%87%83%E8%82%BF/</guid>
+      <description>处理.git文件夹过大臃肿</description>
+    </item>
+  </channel>
+</rss>

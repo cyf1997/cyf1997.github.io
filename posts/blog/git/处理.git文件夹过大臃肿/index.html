@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>处理.git文件夹过大臃肿 | 图南程</title>
+<meta name="keywords" content="git">
+<meta name="description" content="处理.git文件夹过大臃肿">
+<meta name="author" content="tunanc">
+<link rel="canonical" href="https://cyf1997.github.io/posts/blog/git/%E5%A4%84%E7%90%86.git%E6%96%87%E4%BB%B6%E5%A4%B9%E8%BF%87%E5%A4%A7%E8%87%83%E8%82%BF/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://cyf1997.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://cyf1997.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://cyf1997.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://cyf1997.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://cyf1997.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://cyf1997.github.io/posts/blog/git/%E5%A4%84%E7%90%86.git%E6%96%87%E4%BB%B6%E5%A4%B9%E8%BF%87%E5%A4%A7%E8%87%83%E8%82%BF/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+  
+
+<meta property="og:title" content="处理.git文件夹过大臃肿" />
+<meta property="og:description" content="处理.git文件夹过大臃肿" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cyf1997.github.io/posts/blog/git/%E5%A4%84%E7%90%86.git%E6%96%87%E4%BB%B6%E5%A4%B9%E8%BF%87%E5%A4%A7%E8%87%83%E8%82%BF/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-08-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-08-03T00:00:00+00:00" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="处理.git文件夹过大臃肿"/>
+<meta name="twitter:description" content="处理.git文件夹过大臃肿"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://cyf1997.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Blog",
+      "item": "https://cyf1997.github.io/posts/blog/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "处理.git文件夹过大臃肿",
+      "item": "https://cyf1997.github.io/posts/blog/git/%E5%A4%84%E7%90%86.git%E6%96%87%E4%BB%B6%E5%A4%B9%E8%BF%87%E5%A4%A7%E8%87%83%E8%82%BF/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "处理.git文件夹过大臃肿",
+  "name": "处理.git文件夹过大臃肿",
+  "description": "处理.git文件夹过大臃肿",
+  "keywords": [
+    "git"
+  ],
+  "articleBody": "使用BFG清理git历史大文件 本人是后端开发，也会些前端的技术，于是就clone代码，小小代码半天也没有克隆下来，好在最后下载下来了。使用`git count-objects -vH`命令一看，发现有2G多，这是很不正常的。\rgit自带清除命令，但是比较慢，所以我们使用bfg来进行清理。\nbfg下载jar包:https://rtyley.github.io/bfg-repo-cleaner/#download\n步骤 1 打开git命令窗口 需要另起文件夹\n2 只克隆git相关的文件 git clone --mirror git@127.0.0.1:retailCredit.git 克隆完可以在文件夹中看到名为retailCredit.git的文件夹\ncd your_project.git 3 查看大小 git count-objects -vH 可以看到size-pack的大小有2.62G\n4 查看大文件 git rev-list --objects --all | grep \"$(git verify-pack -v ./objects/pack/*.idx | sort -k 3 -n | tail -10 | awk '{print$1}')\" 可以看到有人把自己微信聊天记录传上来了，还有依赖包等和源码无关的东西\n5 清理文件 这里可以清理文件或者文件夹，按需清理。如上图，既有文件夹WeChat Files文件夹，还有压缩包\n5.1 清理文件夹 注意删除的是目录名称，不是路径名称\njava -jar D:\\bfg-1.14.0.jar --no-blob-protection --delete-folders 'WeChat Files' 5.2 清理文件 java -jar D:\\bfg-1.14.0.jar --no-blob-protection -D node_modules.zip\rjava -jar D:\\bfg-1.14.0.jar --no-blob-protection -D permission.zip\rjava -jar D:\\bfg-1.14.0.jar --no-blob-protection -D dist.tar 6 清理脏数据 git reflog expire --expire=now --all \u0026\u0026 git gc --prune=now --aggressive 7 再次查看文件大小 git count-objects -vH 本次清理完之后只剩下了67MB了，感觉还是大了，再查询一次发现还是有垃圾文件\ngit rev-list --objects --all | grep \"$(git verify-pack -v ./objects/pack/*.idx | sort -k 3 -n | tail -10 | awk '{print$1}')\" 接下来重复步骤4至步骤7即可\n8 提交变动 git push -f 提交以后，需要重新克隆项目再进行开发\n",
+  "wordCount" : "129",
+  "inLanguage": "en",
+  "datePublished": "2024-08-03T00:00:00Z",
+  "dateModified": "2024-08-03T00:00:00Z",
+  "author":[{
+    "@type": "Person",
+    "name": "tunanc"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://cyf1997.github.io/posts/blog/git/%E5%A4%84%E7%90%86.git%E6%96%87%E4%BB%B6%E5%A4%B9%E8%BF%87%E5%A4%A7%E8%87%83%E8%82%BF/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "图南程",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cyf1997.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://cyf1997.github.io/" accesskey="h" title="图南程 (Alt + H)">图南程</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://cyf1997.github.io/search" title="🔍搜索 (Alt &#43; /)" accesskey=/>
+                    <span>🔍搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://cyf1997.github.io/" title="🏠主页">
+                    <span>🏠主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://cyf1997.github.io/posts" title="📚文章">
+                    <span>📚文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://cyf1997.github.io/archives/" title="⏱时间轴">
+                    <span>⏱时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://cyf1997.github.io/tags" title="🔖标签">
+                    <span>🔖标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://cyf1997.github.io/about" title="🙋🏻‍♂️关于">
+                    <span>🙋🏻‍♂️关于</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://cyf1997.github.io/links" title="🤝友链">
+                    <span>🤝友链</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://cyf1997.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://cyf1997.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://cyf1997.github.io/posts/blog/">Blog</a></div>
+    <h1 class="post-title entry-hint-parent">
+      处理.git文件夹过大臃肿
+    </h1>
+    <div class="post-description">
+      处理.git文件夹过大臃肿
+    </div>
+    <div class="post-meta"><span title='2024-08-03 00:00:00 +0000 UTC'>August 3, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;tunanc
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e4%bd%bf%e7%94%a8bfg%e6%b8%85%e7%90%86git%e5%8e%86%e5%8f%b2%e5%a4%a7%e6%96%87%e4%bb%b6" aria-label="使用BFG清理git历史大文件">使用BFG清理git历史大文件</a></li>
+                <li>
+                    <a href="#%e6%ad%a5%e9%aa%a4" aria-label="步骤">步骤</a><ul>
+                        
+                <li>
+                    <a href="#1-%e6%89%93%e5%bc%80git%e5%91%bd%e4%bb%a4%e7%aa%97%e5%8f%a3" aria-label="1 打开git命令窗口">1 打开git命令窗口</a></li>
+                <li>
+                    <a href="#2-%e5%8f%aa%e5%85%8b%e9%9a%86git%e7%9b%b8%e5%85%b3%e7%9a%84%e6%96%87%e4%bb%b6" aria-label="2 只克隆git相关的文件">2 只克隆git相关的文件</a></li>
+                <li>
+                    <a href="#3-%e6%9f%a5%e7%9c%8b%e5%a4%a7%e5%b0%8f" aria-label="3 查看大小">3 查看大小</a></li>
+                <li>
+                    <a href="#4-%e6%9f%a5%e7%9c%8b%e5%a4%a7%e6%96%87%e4%bb%b6" aria-label="4 查看大文件">4 查看大文件</a></li>
+                <li>
+                    <a href="#5-%e6%b8%85%e7%90%86%e6%96%87%e4%bb%b6" aria-label="5 清理文件">5 清理文件</a><ul>
+                        
+                <li>
+                    <a href="#51-%e6%b8%85%e7%90%86%e6%96%87%e4%bb%b6%e5%a4%b9" aria-label="5.1 清理文件夹">5.1 清理文件夹</a></li>
+                <li>
+                    <a href="#52-%e6%b8%85%e7%90%86%e6%96%87%e4%bb%b6" aria-label="5.2 清理文件">5.2 清理文件</a></li></ul>
+                </li>
+                <li>
+                    <a href="#6-%e6%b8%85%e7%90%86%e8%84%8f%e6%95%b0%e6%8d%ae" aria-label="6 清理脏数据">6 清理脏数据</a></li>
+                <li>
+                    <a href="#7-%e5%86%8d%e6%ac%a1%e6%9f%a5%e7%9c%8b%e6%96%87%e4%bb%b6%e5%a4%a7%e5%b0%8f" aria-label="7 再次查看文件大小">7 再次查看文件大小</a></li>
+                <li>
+                    <a href="#8-%e6%8f%90%e4%ba%a4%e5%8f%98%e5%8a%a8" aria-label="8 提交变动">8 提交变动</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="使用bfg清理git历史大文件">使用BFG清理git历史大文件<a hidden class="anchor" aria-hidden="true" href="#使用bfg清理git历史大文件">#</a></h1>
+<pre><code>本人是后端开发，也会些前端的技术，于是就clone代码，小小代码半天也没有克隆下来，好在最后下载下来了。使用`git count-objects -vH`命令一看，发现有2G多，这是很不正常的。
+</code></pre>
+<blockquote>
+<p>git自带清除命令，但是比较慢，所以我们使用bfg来进行清理。</p>
+</blockquote>
+<p>bfg下载jar包:https://rtyley.github.io/bfg-repo-cleaner/#download</p>
+<p><img loading="lazy" src="../img/1722700394327.png" alt="1722700394327"  />
+</p>
+<h1 id="步骤">步骤<a hidden class="anchor" aria-hidden="true" href="#步骤">#</a></h1>
+<h2 id="1-打开git命令窗口">1 打开git命令窗口<a hidden class="anchor" aria-hidden="true" href="#1-打开git命令窗口">#</a></h2>
+<p>需要另起文件夹</p>
+<h2 id="2-只克隆git相关的文件">2 只克隆git相关的文件<a hidden class="anchor" aria-hidden="true" href="#2-只克隆git相关的文件">#</a></h2>
+<pre tabindex="0"><code>git clone --mirror git@127.0.0.1:retailCredit.git
+</code></pre><p><img loading="lazy" src="../img/1722698374277.png" alt="1722698374277"  />
+</p>
+<p>克隆完可以在文件夹中看到名为<code>retailCredit.git</code>的文件夹</p>
+<pre tabindex="0"><code>cd your_project.git
+</code></pre><p><img loading="lazy" src="../img/1722698460557.png" alt="1722698460557"  />
+</p>
+<h2 id="3-查看大小">3 查看大小<a hidden class="anchor" aria-hidden="true" href="#3-查看大小">#</a></h2>
+<pre tabindex="0"><code> git count-objects -vH
+</code></pre><p><img loading="lazy" src="../img/1722698568572.png" alt="1722698568572"  />
+</p>
+<p>可以看到size-pack的大小有2.62G</p>
+<h2 id="4-查看大文件">4 查看大文件<a hidden class="anchor" aria-hidden="true" href="#4-查看大文件">#</a></h2>
+<pre tabindex="0"><code>git rev-list --objects --all | grep &#34;$(git verify-pack -v ./objects/pack/*.idx | sort -k 3 -n | tail -10 | awk &#39;{print$1}&#39;)&#34;
+</code></pre><p><img loading="lazy" src="../img/1722698823797.png" alt="1722698823797"  />
+</p>
+<p>可以看到有人把自己微信聊天记录传上来了，还有依赖包等和源码无关的东西</p>
+<h2 id="5-清理文件">5 清理文件<a hidden class="anchor" aria-hidden="true" href="#5-清理文件">#</a></h2>
+<p>这里可以清理文件或者文件夹，按需清理。如上图，既有文件夹WeChat Files文件夹，还有压缩包</p>
+<h3 id="51-清理文件夹">5.1 清理文件夹<a hidden class="anchor" aria-hidden="true" href="#51-清理文件夹">#</a></h3>
+<p>注意删除的是目录名称，不是路径名称</p>
+<pre tabindex="0"><code>java -jar D:\bfg-1.14.0.jar --no-blob-protection --delete-folders  &#39;WeChat Files&#39;
+</code></pre><p><img loading="lazy" src="../img/1722699236744.png" alt="1722699236744"  />
+</p>
+<h3 id="52-清理文件">5.2 清理文件<a hidden class="anchor" aria-hidden="true" href="#52-清理文件">#</a></h3>
+<pre tabindex="0"><code>java -jar D:\bfg-1.14.0.jar --no-blob-protection -D  node_modules.zip
+java -jar D:\bfg-1.14.0.jar --no-blob-protection -D  permission.zip
+java -jar D:\bfg-1.14.0.jar --no-blob-protection -D  dist.tar
+</code></pre><h2 id="6-清理脏数据">6 清理脏数据<a hidden class="anchor" aria-hidden="true" href="#6-清理脏数据">#</a></h2>
+<pre tabindex="0"><code>git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive
+</code></pre><h2 id="7-再次查看文件大小">7 再次查看文件大小<a hidden class="anchor" aria-hidden="true" href="#7-再次查看文件大小">#</a></h2>
+<pre tabindex="0"><code>git count-objects -vH
+</code></pre><p><img loading="lazy" src="../img/1722699354369.png" alt="1722699354369"  />
+</p>
+<p>本次清理完之后只剩下了67MB了，感觉还是大了，再查询一次发现还是有垃圾文件</p>
+<pre tabindex="0"><code>git rev-list --objects --all | grep &#34;$(git verify-pack -v ./objects/pack/*.idx | sort -k 3 -n | tail -10 | awk &#39;{print$1}&#39;)&#34;
+</code></pre><p><img loading="lazy" src="../img/1722699400611.png" alt="1722699400611"  />
+</p>
+<p>接下来重复步骤4至步骤7即可</p>
+<h2 id="8-提交变动">8 提交变动<a hidden class="anchor" aria-hidden="true" href="#8-提交变动">#</a></h2>
+<pre tabindex="0"><code>git push -f
+</code></pre><p>提交以后，需要重新克隆项目再进行开发</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://cyf1997.github.io/tags/git/">Git</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://cyf1997.github.io/posts/blog/mysql/mysql-%E9%80%92%E5%BD%92/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Mysql 递归</span>
+  </a>
+</nav>
+
+  </footer><script src="https://giscus.app/client.js"
+        data-repo="cyf1997/cyf1997.github.io"
+        data-repo-id="R_kgDOMZ1AOA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMZ1AOM4ChH7B"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="https://cyf1997.github.io/">图南程</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
