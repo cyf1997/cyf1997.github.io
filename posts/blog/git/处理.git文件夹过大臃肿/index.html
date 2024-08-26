@@ -274,27 +274,27 @@
 <p>git自带清除命令，但是比较慢，所以我们使用bfg来进行清理。</p>
 </blockquote>
 <p>bfg下载jar包:https://rtyley.github.io/bfg-repo-cleaner/#download</p>
-<p><img loading="lazy" src="../img/1722700394327.png" alt="1722700394327"  />
+<p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/cyf1997/BlogImg/img/1722700394327.png" alt="1722700394327"  />
 </p>
 <h1 id="步骤">步骤<a hidden class="anchor" aria-hidden="true" href="#步骤">#</a></h1>
 <h2 id="1-打开git命令窗口">1 打开git命令窗口<a hidden class="anchor" aria-hidden="true" href="#1-打开git命令窗口">#</a></h2>
 <p>需要另起文件夹</p>
 <h2 id="2-只克隆git相关的文件">2 只克隆git相关的文件<a hidden class="anchor" aria-hidden="true" href="#2-只克隆git相关的文件">#</a></h2>
 <pre tabindex="0"><code>git clone --mirror git@127.0.0.1:retailCredit.git
-</code></pre><p><img loading="lazy" src="../img/1722698374277.png" alt="1722698374277"  />
+</code></pre><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/cyf1997/BlogImg/img/1722698374277.png" alt="1722698374277"  />
 </p>
 <p>克隆完可以在文件夹中看到名为<code>retailCredit.git</code>的文件夹</p>
 <pre tabindex="0"><code>cd your_project.git
-</code></pre><p><img loading="lazy" src="../img/1722698460557.png" alt="1722698460557"  />
+</code></pre><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/cyf1997/BlogImg/img/1722698460557.png" alt="1722698460557"  />
 </p>
 <h2 id="3-查看大小">3 查看大小<a hidden class="anchor" aria-hidden="true" href="#3-查看大小">#</a></h2>
 <pre tabindex="0"><code> git count-objects -vH
-</code></pre><p><img loading="lazy" src="../img/1722698568572.png" alt="1722698568572"  />
+</code></pre><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/cyf1997/BlogImg/img/1722698568572.png" alt="1722698568572"  />
 </p>
 <p>可以看到size-pack的大小有2.62G</p>
 <h2 id="4-查看大文件">4 查看大文件<a hidden class="anchor" aria-hidden="true" href="#4-查看大文件">#</a></h2>
 <pre tabindex="0"><code>git rev-list --objects --all | grep &#34;$(git verify-pack -v ./objects/pack/*.idx | sort -k 3 -n | tail -10 | awk &#39;{print$1}&#39;)&#34;
-</code></pre><p><img loading="lazy" src="../img/1722698823797.png" alt="1722698823797"  />
+</code></pre><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/cyf1997/BlogImg/img/1722698823797.png" alt="1722698823797"  />
 </p>
 <p>可以看到有人把自己微信聊天记录传上来了，还有依赖包等和源码无关的东西</p>
 <h2 id="5-清理文件">5 清理文件<a hidden class="anchor" aria-hidden="true" href="#5-清理文件">#</a></h2>
@@ -302,7 +302,7 @@
 <h3 id="51-清理文件夹">5.1 清理文件夹<a hidden class="anchor" aria-hidden="true" href="#51-清理文件夹">#</a></h3>
 <p>注意删除的是目录名称，不是路径名称</p>
 <pre tabindex="0"><code>java -jar D:\bfg-1.14.0.jar --no-blob-protection --delete-folders  &#39;WeChat Files&#39;
-</code></pre><p><img loading="lazy" src="../img/1722699236744.png" alt="1722699236744"  />
+</code></pre><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/cyf1997/BlogImg/img/1722699236744.png" alt="1722699236744"  />
 </p>
 <h3 id="52-清理文件">5.2 清理文件<a hidden class="anchor" aria-hidden="true" href="#52-清理文件">#</a></h3>
 <pre tabindex="0"><code>java -jar D:\bfg-1.14.0.jar --no-blob-protection -D  node_modules.zip
@@ -312,11 +312,11 @@ java -jar D:\bfg-1.14.0.jar --no-blob-protection -D  dist.tar
 <pre tabindex="0"><code>git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive
 </code></pre><h2 id="7-再次查看文件大小">7 再次查看文件大小<a hidden class="anchor" aria-hidden="true" href="#7-再次查看文件大小">#</a></h2>
 <pre tabindex="0"><code>git count-objects -vH
-</code></pre><p><img loading="lazy" src="../img/1722699354369.png" alt="1722699354369"  />
+</code></pre><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/cyf1997/BlogImg/img/1722699354369.png" alt="1722699354369"  />
 </p>
 <p>本次清理完之后只剩下了67MB了，感觉还是大了，再查询一次发现还是有垃圾文件</p>
 <pre tabindex="0"><code>git rev-list --objects --all | grep &#34;$(git verify-pack -v ./objects/pack/*.idx | sort -k 3 -n | tail -10 | awk &#39;{print$1}&#39;)&#34;
-</code></pre><p><img loading="lazy" src="../img/1722699400611.png" alt="1722699400611"  />
+</code></pre><p><img loading="lazy" src="https://cdn.jsdelivr.net/gh/cyf1997/BlogImg/img/1722699400611.png" alt="1722699400611"  />
 </p>
 <p>接下来重复步骤4至步骤7即可</p>
 <h2 id="8-提交变动">8 提交变动<a hidden class="anchor" aria-hidden="true" href="#8-提交变动">#</a></h2>

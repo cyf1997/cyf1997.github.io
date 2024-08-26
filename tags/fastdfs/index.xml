@@ -9,10 +9,10 @@
     <lastBuildDate>Sat, 20 Jul 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cyf1997.github.io/tags/fastdfs/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>FastDFS</title>
-      <link>https://cyf1997.github.io/posts/blog/fastdfs/</link>
+      <title>FastDFS 安装</title>
+      <link>https://cyf1997.github.io/posts/blog/fastdfs/fastdfs/</link>
       <pubDate>Sat, 20 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>https://cyf1997.github.io/posts/blog/fastdfs/</guid>
+      <guid>https://cyf1997.github.io/posts/blog/fastdfs/fastdfs/</guid>
       <description>开源的轻量级分布式文件系统</description>
     </item>
   </channel>
