@@ -6,8 +6,15 @@
     <description>Recent content in Themes Guide on 图南程</description>
     <generator>Hugo -- 0.128.2</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 03 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Aug 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cyf1997.github.io/series/themes-guide/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Log4j 2.0中的Appender之SocketAppender</title>
+      <link>https://cyf1997.github.io/posts/blog/log4j/log4j-2.0%E4%B8%AD%E7%9A%84appender%E4%B9%8Bsocketappender/</link>
+      <pubDate>Thu, 29 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://cyf1997.github.io/posts/blog/log4j/log4j-2.0%E4%B8%AD%E7%9A%84appender%E4%B9%8Bsocketappender/</guid>
+      <description>Log4j 2.0中的Appender之SocketAppender</description>
+    </item>
     <item>
       <title>处理.git文件夹过大臃肿</title>
       <link>https://cyf1997.github.io/posts/blog/git/%E5%A4%84%E7%90%86.git%E6%96%87%E4%BB%B6%E5%A4%B9%E8%BF%87%E5%A4%A7%E8%87%83%E8%82%BF/</link>
